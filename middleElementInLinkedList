@@ -1,0 +1,60 @@
+package linkedList;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+class LinkedListNodes {
+    int data;
+    LinkedListNodes next;
+
+    public LinkedListNodes(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class middleElement {
+		static LinkedListNodes head;
+		public void insert(int data) {
+	        LinkedListNodes newLinkedListNodes = new LinkedListNodes(data);
+	        if (head == null) {
+	            head = newLinkedListNodes;
+	        } else {
+	            LinkedListNodes current = head;
+	            while (current.next != null) {
+	                current = current.next;
+	            }
+	            current.next = newLinkedListNodes;
+	        }
+	    }
+		static int middleEle(middleElement l) {
+			if(head==null) {
+				return -1;
+			}
+			int count=1;
+			LinkedListNodes start=head;
+			LinkedListNodes temp = head;
+			while(start!=null) {
+				count++;
+				start=start.next;
+			}
+			for(int i=0;i<count/2;i++) {
+				temp=temp.next;
+			}
+			return temp.data;
+			
+		}
+	public static void main(String[] args)
+	{
+		middleElement linkedlist=new middleElement();
+		linkedlist.insert(10);
+		linkedlist.insert(20);
+		linkedlist.insert(30);
+		linkedlist.insert(40);
+		linkedlist.insert(50);
+		linkedlist.insert(60);
+		linkedlist.insert(0);
+		linkedlist.insert(80);
+		System.out.println("MIDDLE ELEMENT IS:"+middleEle(linkedlist));
+	}
+
+}
